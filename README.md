@@ -39,3 +39,17 @@ docker-compose up -d logstash
 ```bash
 curl -X GET http://localhost:9200/_search -H 'Content-Type:application/json' -d '{"query":{"match_all":{}}}' | jq
 ```
+
+## Use case 3. Showing data in Kibana
+
+Once we have load our logs in ElasticSearch, we can use the Kibana service in order to explore all this data.
+For that, we can start the Kibana docker container as follows:
+```bash
+docker-compose up -d kibana
+```
+so we can navigate through the application accessing to `http://localhost:5601/` (we need to configure Kibana in order to
+indicate which is the *index* we want to monitor).
+
+> NOTE: if we want to explore a larger dataset, we can try to download a sample dataset provided by
+> Elastic (curl -O https://download.elastic.co/demos/kibana/gettingstarted/7.x/logs.jsonl.gz), then uncompress it and
+> finally load it to ElasticSearch by using the API (curl -XPOST http://localhost:9200/_bulk -H 'Content-Type:application/x-ndjson' --data-binary @logs.jsonl)

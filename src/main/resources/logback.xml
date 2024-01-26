@@ -7,7 +7,7 @@
 
     <appender name="ELASTIC" class="com.internetitem.logback.elasticsearch.ElasticsearchAppender">
         <url>http://localhost:9200/_bulk</url>
-        <index>java-logs</index>
+        <index>elastic-logs</index>
         <type>tester</type>
         <includeMdc>true</includeMdc>
         <properties>
@@ -45,9 +45,9 @@
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>info</level>
         </filter>
-        <file>/home/fjpaniagua/workspace/examples/elastic-stack-java-example/var/logs/elasticStackExample.log</file>
+        <file>var/logs/elasticStackExample.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>/home/fjpaniagua/workspace/examples/elastic-stack-java-example/var/logs/elasticStackExample.log.%d{yyyy-MM-dd}</fileNamePattern>
+            <fileNamePattern>var/logs/elasticStackExample.log.%d{yyyy-MM-dd}</fileNamePattern>
             <maxHistory>30</maxHistory>
         </rollingPolicy>
         <encoder class="net.logstash.logback.encoder.LogstashEncoder" />
